@@ -12,7 +12,7 @@ const Groqs = async (content) => {
             messages: [
                 {
                     role: 'user',
-                    content: content+"Create a Detail Documentation and Examples of Useage of the Classes and Functions", // Use the content passed as a parameter
+                    content: content.concat("", " Create a Detail Documentation and Examples of Useage of the Classes and Functions"), // Use the content passed as a parameter
                 },
             ],
             model: 'llama3-8b-8192',

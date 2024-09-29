@@ -69,7 +69,7 @@ const FileViewer = () => {
       localStorage.setItem('generatedDocument', response);
       
       // Redirect to /preview page
-      navigate('/preview'); // Use navigate for redirection
+      navigate('/preview2'); // Use navigate for redirection
     } else {
       setError('Please select a file to generate the document.');
     }
