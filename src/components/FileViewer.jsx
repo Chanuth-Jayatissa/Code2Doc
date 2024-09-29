@@ -76,8 +76,8 @@ const FileViewer = () => {
   };
 
   return (
-    <div className="p-4 bg-gray-800 text-white shadow-lg rounded-lg">
-      <h1 className="text-xl font-bold mb-4 text-center">GitHub Repository Files</h1>
+    <div className="p-15 bg-gray-800 text-white shadow-lg rounded-xl">
+      <h1 className="text-3xl font-bold mb-10 text-center">GitHub Repository Files</h1>
       
       <form onSubmit={handleSubmit} className="mb-4 flex justify-center">
         <input
@@ -85,11 +85,11 @@ const FileViewer = () => {
           placeholder="Enter GitHub Repository URL"
           value={repoUrl}
           onChange={(e) => setRepoUrl(e.target.value)}
-          className="border border-gray-300 rounded-md p-2 w-full max-w-md text-white-900"
+          className="border border-gray-300 rounded-md p-8 w-full max-w-lg text-white-900"
         />
         <button
           type="submit"
-          className="bg-purple-600 text-white rounded-md p-2 ml-2 hover:bg-purple-700"
+          className="bg-purple-600 text-white rounded-md ml-6 p-4 ml-2 hover:bg-purple-700"
         >
           Fetch Files
         </button>
@@ -125,7 +125,7 @@ const FileViewer = () => {
       <div className="flex justify-center mt-4">
         <button
           onClick={handleGenerateDocument}
-          className="bg-purple-600 text-white rounded-md p-2 hover:bg-purple-700"
+          className="bg-purple-600 text-white rounded-md mt-8 p-5 hover:bg-purple-700"
         >
           Generate Document
         </button>
