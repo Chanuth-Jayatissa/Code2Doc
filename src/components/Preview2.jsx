@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import MarkdownPreview from './MarkdownPreview';
 
 function Preview2() {
-  return (
-    <div>Preview2</div>
-  )
+    <link rel="stylesheet" href="editormd.min.css" />
+
+    return (
+        <MarkdownPreview />
+        
+    );
 }
 
-export default Preview2
+export default Preview2;

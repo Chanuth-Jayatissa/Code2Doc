@@ -1,0 +1,43 @@
+.markdown-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .editor-section, .preview-section {
+    flex: 1;
+  }
+  
+  .markdown-editor {
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
+    padding: 10px;
+  }
+  
+  .markdown-preview {
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    min-height: 100px;
+    color: black;
+  }
+
+  .download-button-section {
+    text-align: right;
+  }
+  
+  .download-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .download-button:hover {
+    background-color: #45a049;
+  }
+  
+  
