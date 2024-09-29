@@ -23,7 +23,7 @@ function Signup() {
                     onError={() => {
                         console.log('Login Failed');
                     }}
-                />;
+                />
             </center>
         </div>
 
