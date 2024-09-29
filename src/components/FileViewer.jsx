@@ -2,12 +2,16 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Groqs from './Groqs'; // Import your Groqs component
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const FileViewer = () => {
   const [files, setFiles] = useState([]);
   const [repoUrl, setRepoUrl] = useState('');
   const [error, setError] = useState('');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null); // State for selected file
+  const navigate = useNavigate(); // Initialize navigate
 
   const fetchFiles = async (url) => {
     const urlParts = url.split('github.com/');
@@ -44,21 +48,48 @@ const FileViewer = () => {
     file.name.endsWith('.py') || file.name.endsWith('.java')
   );
 
-  return (
-    <div className="p-4 bg-gray-800 text-white">
-      <h1 className="text-xl font-bold mb-4">GitHub Repository Files</h1>
+  // Function to fetch file content
+  const fetchFileContent = async (file) => {
+    try {
+      const response = await axios.get(file.download_url);
+      return response.data; // Return the file content
+    } catch (error) {
+      console.error('Error fetching file content:', error);
+      setError('Failed to fetch file content. Please try again.');
+      return '';
+    }
+  };
+
+  const handleGenerateDocument = async () => {
+    if (selectedFile) {
+      const content = await fetchFileContent(selectedFile); // Fetch the content of the selected file
+      const response = await Groqs(content); // Call Groqs with the file content
       
-      <form onSubmit={handleSubmit} className="mb-4">
+      // Store the response in localStorage
+      localStorage.setItem('generatedDocument', response);
+      
+      // Redirect to /preview page
+      navigate('/preview'); // Use navigate for redirection
+    } else {
+      setError('Please select a file to generate the document.');
+    }
+  };
+
+  return (
+    <div className="p-4 bg-gray-800 text-white shadow-lg rounded-lg">
+      <h1 className="text-xl font-bold mb-4 text-center">GitHub Repository Files</h1>
+      
+      <form onSubmit={handleSubmit} className="mb-4 flex justify-center">
         <input
           type="text"
           placeholder="Enter GitHub Repository URL"
           value={repoUrl}
           onChange={(e) => setRepoUrl(e.target.value)}
-          className="border border-gray-300 rounded-md p-2 w-full text-white-900"
+          className="border border-gray-300 rounded-md p-2 w-full max-w-md text-white-900"
         />
         <button
           type="submit"
-          className="bg-purple-600 text-white rounded-md p-2 mt-2 hover:bg-purple-700"
+          className="bg-purple-600 text-white rounded-md p-2 ml-2 hover:bg-purple-700"
         >
           Fetch Files
         </button>
@@ -72,14 +103,16 @@ const FileViewer = () => {
             {filteredFiles.length > 0 ? (
               filteredFiles.map((file) => (
                 <li key={file.sha} className="hover:bg-purple-700">
-                  <a 
-                    href={file.download_url} // Use the raw download URL
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="block p-2 text-purple-300 hover:underline"
-                  >
+                  <label className="block p-2 text-purple-300 hover:underline">
+                    <input
+                      type="radio"
+                      name="file" // Name should be the same for radio buttons
+                      value={file.name}
+                      onChange={() => setSelectedFile(file)} // Set selected file
+                      className="mr-2"
+                    />
                     {file.name}
-                  </a>
+                  </label>
                 </li>
               ))
             ) : (
@@ -88,6 +121,15 @@ const FileViewer = () => {
           </ul>
         </div>
       )}
+
+      <div className="flex justify-center mt-4">
+        <button
+          onClick={handleGenerateDocument}
+          className="bg-purple-600 text-white rounded-md p-2 hover:bg-purple-700"
+        >
+          Generate Document
+        </button>
+      </div>
     </div>
   );
 };
