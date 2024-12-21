@@ -1,6 +1,6 @@
 # Code2Doc
 
-**Code2Doc** is a web application that takes files of code written in Python or Java and generates detailed documentation for them. Users can also input their GitHub links, allowing the website to automatically search for and document all Python or Java files in their repositories. This feature not only saves time but also ensures that developers have well-structured documentation for their projects.
+**Code2Doc** is a web application that takes files of code written in Python or Java and generates detailed documentation for them. Users can input their GitHub links, allowing the website to automatically search for and document all Python or Java files in their repositories. This feature not only saves time but also ensures that developers have well-structured documentation for their projects.
 
 ## Inspiration
 
