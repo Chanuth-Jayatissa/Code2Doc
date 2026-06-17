@@ -1,17 +1,59 @@
 # Code2Doc
 
-**Code2Doc** is a web application that takes files of code written in Python or Java and generates detailed documentation for them. Users can input their GitHub links, allowing the website to automatically search for and document all Python or Java files in their repositories. This feature not only saves time but also ensures that developers have well-structured documentation for their projects.
+Code2Doc is a developer tool concept that helps generate documentation for Python and Java code. The project was built for MHacks 2024 with Karthikeya Thotak and explores a workflow where users can provide code files or GitHub links and receive structured documentation output.
 
-## Inspiration
+## Features
 
-The inspiration behind **Code2Doc** stemmed from the common struggle developers face when documenting their code. Writing documentation can often feel tedious, and many developers lack the time or resources to create comprehensive guides. We aimed to simplify this process, making it easier for users to generate quality documentation for their projects, ultimately enhancing code readability and maintainability.
+- Developer-focused documentation generation concept.
+- Support direction for Python and Java code documentation.
+- GitHub-link workflow concept for discovering source files in a repository.
+- Next.js app scaffold with a landing page and preview route.
+- Demo video included in the original project README.
 
-## Project Demo
+## Demo
 
-[![Code2Doc Project Demo](https://img.youtube.com/vi/i9ItM63RQYc/0.jpg)](https://www.youtube.com/watch?v=i9ItM63RQYc)
+Watch the project demo: https://www.youtube.com/watch?v=i9ItM63RQYc
 
-Click on the image above to watch the demo video of **Code2Doc**!
+## Tech Stack
 
----
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
 
-**Project by**: [@KarthikeyaThotak](https://github.com/KarthikeyaThotak) and myself for **MHacks 2024** at the University of Michigan, Ann Arbor.
+## Project Structure
+
+- README.md - project overview and demo attribution
+- my-app/app/page.tsx - landing page
+- my-app/app/preview/page.tsx - preview route
+- my-app/app/ui - shared UI pieces
+- my-app/package.json - Next.js app scripts and dependencies
+
+## Getting Started
+
+From the app directory:
+
+~~~bash
+cd my-app
+npm install
+npm run dev
+~~~
+
+Open http://localhost:3000.
+
+## Useful Commands
+
+~~~bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+~~~
+
+## Credits
+
+Built by Chanuth Jayatissa and Karthikeya Thotak for MHacks 2024 at the University of Michigan.
+
+## Status
+
+Hackathon project. The README preserves the project concept and demo while adding setup, stack, and structure details for portfolio review.
